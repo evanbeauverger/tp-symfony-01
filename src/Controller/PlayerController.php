@@ -56,6 +56,7 @@ class PlayerController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            dump($player);
             $this->entityManager->persist($player, true);
             $this->entityManager->flush();
 
