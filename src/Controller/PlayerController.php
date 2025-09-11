@@ -57,8 +57,9 @@ class PlayerController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->persist($player, true);
+            $this->entityManager->flush();
 
-            return $this->redirectToRoute('game');
+            return $this->redirectToRoute('app_player');
         }
 
         return $this->render('game/create.html.twig', ['form' => $form->createView()]);
