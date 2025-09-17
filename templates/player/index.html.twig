@@ -9,6 +9,7 @@
         <p>
             Le joueur n°{{ player.id }} s'appelle {{ player.name }} 
             <a href="/player/edit/{{ player.id }}">Update</a>
+            <a href="/player/delete/{{ player.id }}">Delete</a>
         </p>  
         
     {% endfor %}
