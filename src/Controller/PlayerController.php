@@ -38,6 +38,25 @@ class PlayerController extends AbstractController
         }
     }
 
+    #[Route('player/edit/{id}', name: 'edit_player')]
+    public function edit(Request $request, int $id): Response
+    {   
+        $player = $this->playerRepository->find($id);
+        if ($player) {
+            $form = $this->formFactory->create(PlayerType::class, $player);
+
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->entityManager->persist($player, true);
+                $this->entityManager->flush();
+
+                return $this->redirectToRoute('app_player');
+            }
+
+            return $this->render('player/edit.html.twig', ['form' => $form->createView()]);
+        }
+    }
+
     #[Route('/player/', name: 'app_player')]
     public function index(): Response
     {

@@ -6,7 +6,10 @@
 
     {% for player in players %}
 
-        <p>Le joueur n°{{ player.id }} s'appelle {{ player.name }}</p>
+        <p>
+            Le joueur n°{{ player.id }} s'appelle {{ player.name }} 
+            <a href="/player/edit/{{ player.id }}">Update</a>
+        </p>  
         
     {% endfor %}
 
