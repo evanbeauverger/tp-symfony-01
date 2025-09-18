@@ -32,7 +32,7 @@ class PlayerController extends AbstractController
         if ($player) {
             $this->entityManager->remove($player);
             $this->entityManager->flush();
-//          return new Response('Player with id ' . $id . ' deleted <a href="/player/">Retour</a>');
+//          return new Response('Player with id ' . $id . ' deleted');
             return $this->render('player/delete.html.twig');
         } else {
             return new Response('Player with id ' .$id. ' not found', 404);
